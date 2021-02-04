@@ -1,0 +1,9 @@
+package Baekjoon_DFS_BFS;
+
+public class Main5 {
+
+	public static void main(String[] args) {
+		//BFS가 맞는 방법인지 이해가 안됨.
+	}
+
+}

@@ -1,0 +1,15 @@
+package Baekjoon_DFS_BFS;
+
+public class Main9 {
+
+	private static int[][] map;
+	private static int[][] visited;
+	
+	private static int result=-1;
+	
+	private static boolean isBroken=false;
+	public static void main(String[] args) {
+		
+	}
+
+}

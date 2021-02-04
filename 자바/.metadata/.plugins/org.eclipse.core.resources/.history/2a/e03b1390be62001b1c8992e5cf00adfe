@@ -1,0 +1,32 @@
+package Baekjoon_DFS_BFS;
+import java.util.*;
+import java.io.*;
+public class Main3_2 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+
+		int N = scan.nextInt();
+		
+		int[][] map = new int[N][N];
+		
+		for(int i=0;i<N;i++) {
+			String[] str = scan.next().split("");
+			for(int j=0;j<N;j++) {
+				if(Objects.equals(str[j],"1")) {
+					map[i][j]=1;
+				}
+			}
+		}
+		//map 입력 완료
+		
+		
+		
+	}
+	//Stack 이용
+	//LinkedList 이용 (동 묶음)
+	private static void DFS() {
+		Stack s = new Stack();
+		
+	}
+}

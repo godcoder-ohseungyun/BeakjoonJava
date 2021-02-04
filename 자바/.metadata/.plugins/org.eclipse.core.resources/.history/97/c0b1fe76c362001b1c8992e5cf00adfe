@@ -1,0 +1,72 @@
+package Baekjoon_DFS_BFS;
+import java.util.*;
+import java.io.*;
+public class Main3_2 {
+	
+	private static int[][] map;
+	private static int count=0;
+	private static int N=0;
+	private static LinkedList<Integer> list = new LinkedList<>();
+	
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+
+		N = scan.nextInt();
+		
+		map = new int[N][N];
+		
+		for(int i=0;i<N;i++) {
+			String[] str = scan.next().split("");
+			for(int j=0;j<N;j++) {
+				if(Objects.equals(str[j],"1")) {
+					map[i][j]=1;
+				}
+			}
+		}
+		//map 입력 완료
+		
+		//to find starting point
+		for(int i=0;i<N;i++) {
+			for(int j=0;j<N;j++) {
+				if(map[i][j]==1) {
+					DFS(i,j);
+					list.add(count);
+					count=0;
+				}
+			}
+		}
+		
+	}
+	//Stack 이용
+	//LinkedList 이용 (동 묶음)
+	//지난 좌표는 2로 바꿈 (방문표시)
+	private static void DFS(int x,int y) {
+		map[x][y]=2;//방문 체크
+		count++;
+		if(isCanGo(x+1,y)) DFS(x+1,y); //상
+		if(isCanGo(x-1,y)) DFS(x-1,y); //하
+		if(isCanGo(x,y+1)) DFS(x,y+1); //우
+		if(isCanGo(x,y-1)) DFS(x,y-1); //좌
+	}
+	
+	private static boolean isCanGo(int x,int y) { //갈수있는지 없는지 검사
+		
+		if(x>=N||y>=N||x<0||y<0) return false; //범주 넘어섯나? (예외 발생 방지를 위해 검사 순서 이렇게 설정)
+		else if(map[x][y]!=1) return false;	   //1이 아닌가?
+		
+		else return true;
+	}
+		
+}
+
+class Point{
+		int x;
+		int y=0;
+		Point(int x,int y){
+			this.x=x;
+			this.y=y;
+		}
+		public int getX() {
+			return this.x;
+		}
+	}

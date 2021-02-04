@@ -1,0 +1,117 @@
+package Baekjoon_DFS_BFS;
+import java.io.*;
+import java.util.*;
+
+public class Main9 {
+
+	private static int[][] map;
+	private static int[][] visited;
+	
+	private static int result=-1;
+	
+	private static int[] dx = {-1,1,0,0};//상하
+	private static int[] dy = {0,0,-1,1};//좌우
+	
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		StringTokenizer st = new StringTokenizer(br.readLine()," ");
+		
+		int N = Integer.parseInt(st.nextToken());
+		int M = Integer.parseInt(st.nextToken());
+		map=new int[N][M];
+		visited=new int[N][M];
+		
+		String[] str;
+		
+		for(int i=0;i<N;i++) {
+			str=br.readLine().split("");
+			for(int j=0;j<M;j++) {
+				if(Objects.equals(str[j],"1"))
+						map[i][j]=1;
+				
+			}
+		}
+		
+		BFS(N,M);
+		/*
+		for(int i=0;i<N;i++) {
+			for(int j=0;j<M;j++) {
+						bw.write(visited[i][j]+"");
+				
+			}
+			bw.newLine();
+		}
+		bw.flush();
+		bw.close();
+		*/
+		System.out.println(result);
+		
+		
+	}
+	
+	private static void BFS(int N,int M) {
+		Queue<Point> q = new LinkedList<>();
+		
+		q.add(new Point(0,0,false));
+		
+		visited[0][0]=1;
+		
+		while(!q.isEmpty()) {
+			Point p = q.poll();
+			
+			for(int i=0;i<4;i++) { //상하좌우 검사
+				int nx = p.getX() + dx[i];
+				int ny = p.getY() + dy[i];
+				
+				if(p.getX()==N-1 && p.getY()==M-1) {
+					result = visited[p.getX()][p.getY()];
+					break;
+				}
+				
+				if(nx>=N||ny>=M||nx<0||ny<0) continue;
+				
+				if(visited[nx][ny]!=0) continue;
+				
+				if(map[nx][ny]==0) { //벽 x
+					visited[nx][ny]=visited[p.getX()][p.getY()]+1; //이부분이 의심스러움
+					q.add(new Point(nx,ny,false));
+				}
+				else { //벽
+					if(!p.getIsBroken()) {
+						visited[nx][ny]=visited[p.getX()][p.getY()]+1;
+						q.add(new Point(nx,ny,true));
+					}
+				}
+		}
+			}
+			
+			
+	}
+static class Point{
+	private boolean isBroken;
+	private int x;
+	private int y;
+	
+	public Point(int x,int y,boolean isBroken) {
+		this.x=x;
+		this.y=y;
+		this.isBroken=isBroken;
+	}
+	
+	public int getX() {
+		return this.x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
+	
+	public boolean getIsBroken() {
+		return this.isBroken;
+	}
+}
+
+
+}
+

@@ -1,0 +1,21 @@
+package Baekjoon_DFS_BFS;
+import java.util.*;
+import java.io.*;
+
+public class Main3 {
+	
+	private LinkedList<LinkedList<Integer>> listIfo= new LinkedList<>();
+	
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int T = Integer.parseInt(br.readLine());
+		String[] toList;
+		for(int i=0;i<T;i++) {
+			toList=br.readLine().split("");
+			
+		}
+	}
+
+}

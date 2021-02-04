@@ -1,0 +1,58 @@
+package Baekjoon_DFS_BFS;
+import java.util.*;
+import java.io.*;
+
+public class Main3 {
+	
+	private static LinkedList<LinkedList<Integer>> listIfo= new LinkedList<>();
+	private static LinkedList<Integer> vertx = new LinkedList<>(); //정보 삽입이 잦음으로 LinkedList가 효과적
+    private static LinkedList<LinkedList<Integer>> colored = new LinkedList<>(); //단지 묶음의 집합
+    private static LinkedList<Integer> color = new LinkedList<>(); //아파트 묶음
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int T = Integer.parseInt(br.readLine());
+		String[] toList;
+		
+		ArrayList<Integer> visited = new ArrayList<>(T); //정보 참조를 자주 함으로 ArrayList가 효과적
+		
+		for(int i=0;i<T;i++) {
+			toList=br.readLine().split("");
+			
+			for(int index=0;index<toList.length;index++) {
+				if(toList[index].equals("1")) {
+					vertx.add(index);
+				}
+			}
+			listIfo.add(vertx);
+			vertx.clear();
+		}
+		//ㄴ> 모든 정보 인접 리스트화 "정점-1" 로 좌표 표기
+		
+		for(int i=0;i<T;i++) { //정점 수 만큼 반복
+			if(!visited.contains(i)) { //i는 현재 정점
+				dfs(i,visited);
+				colored.add(color);
+				color.clear();
+			}
+			
+		}
+		
+	}
+	
+	private static void dfs(int i,ArrayList<Integer> visited) {
+		
+		visited.add(i);
+		color.add(i);
+		
+		for(int index:listIfo.get(i)) {
+			if(!visited.contains(index)) {
+				dfs(index,visited);
+			}
+		}
+		
+		
+	}
+
+}

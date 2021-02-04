@@ -1,0 +1,14 @@
+package Baekjoon_DFS_BFS;
+import java.util.*;
+import java.io.*;
+public class Main3_2 {
+
+	public static void main(String[] args) {
+		Scanner scan = new Scanner(System.in);
+
+	}
+
+	private static void DFS() {
+		
+	}
+}

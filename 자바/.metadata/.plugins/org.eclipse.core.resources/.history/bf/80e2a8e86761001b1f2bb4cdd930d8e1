@@ -1,0 +1,15 @@
+package Baekjoon_DFS_BFS;
+import java.util.*;
+import java.io.*;
+
+public class Main3 {
+	
+	private LinkedList<LinkedList<Integer>> listIfo= new LinkedList<>();
+	
+	
+	public static void main(String[] args) {
+	
+		
+	}
+
+}

@@ -1,0 +1,26 @@
+package Baekjoon_DFS_BFS;
+import java.util.*;
+import java.io.*;
+
+public class Main3 {
+	
+	private static LinkedList<LinkedList<String>> listIfo= new LinkedList<>();
+	private static LinkedList<Integer> vertx = new LinkedList<>();
+	
+	public static void main(String[] args) throws NumberFormatException, IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int T = Integer.parseInt(br.readLine());
+		String[] toList;
+		for(int i=0;i<T;i++) {
+			toList=br.readLine().split("");
+			
+			for(int index=0;index<toList.length;index++) {
+				if(toList[index].equals("1")) {
+					vertx.add(index);
+				}
+			}
+		}
+	}
+
+}

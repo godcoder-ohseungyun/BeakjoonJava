@@ -1,0 +1,45 @@
+package Baekjoon_DFS_BFS;
+import java.util.*;
+import java.io.*;
+//vertex
+//edges
+public class Main2 {
+
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int vertex = Integer.parseInt(br.readLine());
+		int edges = Integer.parseInt(br.readLine());
+		int i;
+		int j;
+		int[][] map = new int[vertex+1][vertex+1];
+		int[] visted = new int[vertex+1];
+		
+		for(int e=0;e<edges;e++) {
+			i=Integer.parseInt(br.readLine());
+			j=Integer.parseInt(br.readLine());
+			map[i][j]=map[j][i]=1;
+		}
+		
+		int count = BFS(vertex);
+		
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+		
+		bw.write(count+"");
+		bw.newLine();
+		bw.flush();
+		bw.close();
+
+	}
+	
+	private static int BFS(int vertex) {
+		int count=0;
+		Queue<Integer> q = new LinkedList<>();
+		
+ 		
+		
+		
+		return count;
+	}
+
+}

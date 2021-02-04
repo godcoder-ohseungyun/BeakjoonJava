@@ -1,0 +1,58 @@
+package Baekjoon_DFS_BFS;
+import java.util.*;
+import java.io.*;
+
+public class Main5 {
+	private static int N;
+	private static int M;
+	private static int[][] map;
+	public static void main(String[] args) {
+		
+		
+		
+		
+	}
+	
+	
+	private static void BFS() {
+		Queue<Dot> q = new LinkedList<>();
+		int x;
+		int y;
+		q.add(new Dot(1,1));
+		
+		while(!q.isEmpty()) {
+			x=q.peek().getX();
+			y=q.poll().getY();
+			if(isVal(x,y+1))  {q.add(new Dot(x,y+1)); map[x][y+1]=map[x][y]+1;  }  //©Л
+			if(isVal(x,y-1))  {q.add(new Dot(x,y-1)); map[x][y-1]=map[x][y]+1;  }//аб				
+			if(isVal(x+1,y))  {q.add(new Dot(x+1,y)); map[x+1][y]=map[x][y]+1;  } //╩С
+			if(isVal(x-1,y))  {q.add(new Dot(x-1,y)); map[x-1][y]=map[x][y]+1;  }  //го
+		}
+		
+	}
+	
+	private static boolean isVal(int x,int y) {
+		if(x>=N||x<0||y>=M||y<0) return false;
+		if(map[x][y]==1) return true;
+		else return false;
+	}
+}
+
+class Dot{
+	private int x;
+	private int y;
+	
+	public Dot(int x,int y) {
+		this.x=x;
+		this.y=y;
+	}
+	
+	public int getX(){
+		return this.x;
+	}
+	
+	public int getY() {
+		return this.y;
+	}
+
+}
